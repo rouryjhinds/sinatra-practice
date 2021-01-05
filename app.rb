@@ -1,6 +1,6 @@
 require "sinatra"
 set :session_secret, 'super secret'
-
+# shotgun app.rb -p 4567
 get '/' do
     "Hello world"
 end
@@ -13,7 +13,13 @@ get '/anotherroute' do
     "just another route"
 end
 
-get '/cat' do
-    @names = ["Amigo", "Oscar", "Viking"].sample
+get '/random-cat' do
+    @name = ["Roury", "Sihon", "Lucy", "Nala"].sample
+    erb(:index)
+end
+
+get '/named-cat' do
+    p params
+    @name = params[:name]
     erb(:index)
 end
